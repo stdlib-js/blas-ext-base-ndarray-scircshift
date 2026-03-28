@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,25 +16,17 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var strided = require( '@stdlib/blas-ext-base-scircshift' ).ndarray;
-
-
-// MAIN //
+import { typedndarray, float32ndarray } from '@stdlib/types/ndarray';
 
 /**
 * Circularly shifts the elements of a one-dimensional single-precision floating-point ndarray by a specified number of positions.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing a one-dimensional input ndarray and a zero-dimensional ndarray specifying the number of positions to shift
-* @returns {ndarray} input ndarray
+* @param arrays - array-like object containing a one-dimensional input ndarray and a zero-dimensional ndarray specifying the number of positions to shift
+* @returns input ndarray
 *
 * @example
 * var Float32Array = require( '@stdlib/array-float32' );
@@ -51,17 +43,9 @@ var strided = require( '@stdlib/blas-ext-base-scircshift' ).ndarray;
 * var out = scircshift( [ x, k ] );
 * // returns <ndarray>[ 4.0, 5.0, 1.0, 2.0, 3.0 ]
 */
-function scircshift( arrays ) {
-	var x;
-	var k;
-
-	x = arrays[ 0 ];
-	k = ndarraylike2scalar( arrays[ 1 ] );
-	strided( numelDimension( x, 0 ), k, getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
-	return x;
-}
+declare function scircshift( arrays: [ float32ndarray, typedndarray<number> ] ): float32ndarray;
 
 
 // EXPORTS //
 
-module.exports = scircshift;
+export = scircshift;
